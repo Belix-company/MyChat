@@ -1,5 +1,7 @@
-const azizSelectorBtn = document.querySelector('#john-selector')
-const boburSelectorBtn = document.querySelector('#jane-selector')
+const azizSelectorBtn = document.querySelector('#aziz-selector')
+const boburSelectorBtn = document.querySelector('#bobur-selector')
+const toshmatSelectorBtn = document.querySelector('#toshmat-selector')
+const eshmatSelectorBtn = document.querySelector('#eshmat-selector')
 const chatHeader = document.querySelector('.chat-header')
 const chatMessages = document.querySelector('.chat-messages')
 const chatInputForm = document.querySelector('.chat-input-form')
@@ -9,7 +11,7 @@ const clearChatBtn = document.querySelector('.clear-chat-button')
 const messages = JSON.parse(localStorage.getItem('messages')) || []
 
 const createChatMessageElement = (message) => `
-  <div class="message ${message.sender === 'Aziz' ? 'blue-bg' : 'gray-bg'}">
+  <div >
     <div class="message-sender">${message.sender}</div>
     <div class="message-text">${message.text}</div>
     <div class="message-timestamp">${message.timestamp}</div>
@@ -27,11 +29,15 @@ const updateMessageSender = (name) => {
 
   if (name === 'Aziz') {
     azizSelectorBtn.classList.add('active-person')
-    boburSelectorBtn.classList.remove('active-person')
   }
   if (name === 'Bobur') {
-    azizSelectorBtn.classList.add('active-person')
-    boburSelectorBtn.classList.remove('active-person')
+    boburSelectorBtn.classList.add('active-person')
+  } 
+  else if (name === 'Toshmat') {
+    toshmatSelectorBtn.classList.add('active-person')
+  }
+  else if (name === 'Eshmat') {
+    eshmatSelectorBtn.classList.add('active-person')
   }
 
   chatInput.focus()
@@ -39,6 +45,8 @@ const updateMessageSender = (name) => {
 
 azizSelectorBtn.onclick = () => updateMessageSender('Aziz')
 boburSelectorBtn.onclick = () => updateMessageSender('Bobur')
+toshmatSelectorBtn.onclick = () => updateMessageSender('Toshmat')
+eshmatSelectorBtn.onclick = () => updateMessageSender('Eshmat')
 
 const sendMessage = (e) => {
   e.preventDefault()
@@ -69,4 +77,3 @@ clearChatBtn.addEventListener('click', () => {
   localStorage.clear()
   chatMessages.innerHTML = ''
 })
-
