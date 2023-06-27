@@ -30,7 +30,7 @@ const updateMessageSender = (name) => {
   if (name === 'Aziz') {
     azizSelectorBtn.classList.add('active-person')
   }
-  if (name === 'Bobur') {
+  else if (name === 'Bobur') {
     boburSelectorBtn.classList.add('active-person')
   } 
   else if (name === 'Toshmat') {
